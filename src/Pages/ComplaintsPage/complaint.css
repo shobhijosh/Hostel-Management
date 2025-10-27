@@ -1,0 +1,255 @@
+/* --- Main Content Layout --- */
+.main-complaint-content {
+  flex-grow: 1;
+  padding: 30px 40px;
+}
+
+/* --- Header for Complaints Page --- */
+.room-header {
+  margin-bottom: 30px;
+}
+
+.room-header h2 {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--text-color);
+  margin-bottom: 8px;
+}
+
+.room-header p {
+  font-size: 16px;
+  color: var(--light-text);
+}
+
+/* Status Badge Styling */
+.status-badge {
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  display: inline-block;
+  text-transform: capitalize; /* Ensure "New" is capitalized if needed */
+}
+
+.status-new {
+  background-color: var(--status-new-bg);
+  color: var(--status-new-text);
+}
+
+.status-inprogress {
+  background-color: var(--status-inprogress-bg);
+  color: var(--status-inprogress-text);
+}
+
+.status-resolved {
+  background-color: var(--status-resolved-bg);
+  color: var(--status-resolved-text);
+}
+
+/* View Button Styling */
+.view-btn {
+  background: none;
+  border: none;
+  color: var(--primary-blue);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 6px 10px;
+  border-radius: 4px;
+  transition: color 0.2s;
+}
+
+.view-btn:hover {
+  color: var(--secondary-dark)
+}
+
+
+/* View complaint styling */
+/* --- Layout for Complaint Details (Main Section) --- */
+.complaint-details-layout {
+    display: flex;
+    gap: 30px; /* Space between left and right panels */
+}
+
+.left-panel {
+    flex: 3; /* Takes up more space */
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Space between cards in the left panel */
+}
+
+.right-room-panel {
+    flex: 1; /* Takes up less space */
+    min-width: 300px; /* Ensure it doesn't get too small */
+}
+
+/* --- Card Styling (Shared) --- */
+.room-card {
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    border: 1px solid #d2d2d2;
+    padding: 25px;
+}
+
+.room-card h3 {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 20px;
+}
+
+/* --- Info Grid for Complaint & Student Information --- */
+.info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two columns */
+    gap: 15px 25px; /* Row and column gap */
+}
+
+.info-item .label {
+    display: block;
+    font-size: 14px;
+    color: var(--light-text);
+    margin-bottom: 4px;
+}
+
+.info-item .value {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text-color);
+    word-wrap: break-word; /* Ensure long text wraps */
+}
+
+.info-item.full-width {
+    grid-column: span 2; /* Make this item span both columns */
+}
+
+/* --- Complaint History Styling --- */
+/* .complaint-history .history-item {
+    display: flex;
+    align-items: flex-start; Align dot with the top of the text
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.complaint-history .history-item:not(:last-child)::before {
+    content: '';
+    position: absolute;
+    left: 9px; Adjust to center under the dot
+    top: 25px; Start below the dot
+    bottom: -15px; Extend downwards
+    width: 2px;
+    background-color: var(--border-color);
+    z-index: 1;
+}
+
+.history-dot {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: var(--border-color); Default
+    flex-shrink: 0; Prevent dot from shrinking
+    margin-right: 15px;
+    z-index: 2; Keep dot above the line
+    border: 2px solid var(--sidebar-bg); White border to stand out on the line
+}
+
+.history-dot.blue { background-color: var(--history-dot-blue); }
+.history-dot.orange { background-color: var(--history-dot-orange); }
+.history-dot.yellow { background-color: var(--history-dot-yellow); }
+
+.history-item p {
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 4px;
+    line-height: 1.4;
+}
+
+.history-item p strong {
+    font-weight: 600;
+}
+
+.history-date {
+    font-size: 13px;
+    color: var(--light-text);
+}
+
+.history-status-inprogress {
+    color: var(--status-inprogress-text);
+    font-weight: 600;
+} */
+
+/* --- Actions Panel Styling (Right Panel) --- */
+.actions-panel .form-group {
+    margin-bottom: 20px;
+}
+
+.actions-panel label {
+    display: block;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 8px;
+}
+
+/* Shared select/input styling for dropdowns and textarea */
+.select-wrapper {
+    position: relative;
+}
+
+.select-wrapper select,
+.actions-panel textarea {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid var(--input-border);
+    border-radius: 6px;
+    font-size: 15px;
+    color: var(--text-color);
+    background-color: white;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.select-wrapper select:focus,
+.actions-panel textarea:focus {
+    outline: none;
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.2);
+}
+
+.select-wrapper .dropdown-arrow {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    fill: var(--light-text);
+    pointer-events: none;
+}
+
+.actions-panel textarea {
+    resize: vertical;
+    min-height: 90px;
+    cursor: text;
+}
+
+.save-changes-btn {
+    width: 100%;
+    background-color: var(--primary-blue);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 10px; /* Space from textarea */
+    transition: opacity 0.2s;
+}
+
+.save-changes-btn:hover {
+    opacity: 0.8;
+}

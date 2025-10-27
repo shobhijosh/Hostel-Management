@@ -1,0 +1,124 @@
+/* --- Main Content Layout --- */
+.main-content {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding:20px;
+}
+
+.login-container {
+  width: 100%;
+  max-width: 600px;
+  background-color: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  text-align: center;
+}
+
+/* --- Tabs --- */
+.welcome-title {
+  font-size: 2em;
+  font-weight: 700;
+  color: #212529;
+}
+
+.tab-controls {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+  gap: 20px;
+}
+
+.tab-button {
+  background: none;
+  border: none;
+  font-size: 1.1em;
+  font-weight: 500;
+  padding: 10px 0;
+  cursor: pointer;
+  color: var(--text-dark);
+  position: relative;
+  transition: color 0.3s;
+}
+
+.tab-button:hover {
+  color: var(--primary-blue);
+}
+
+.tab-button#active {
+  color: var(--primary-blue);
+}
+
+/* Underline effect for active tab */
+.tab-button#active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -5px;
+  height: 3px;
+  background-color: var(--primary-blue);
+  border-radius: 2px;
+}
+
+/* --- Form --- */
+.login-form {
+  text-align: left;
+  padding:20px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  box-sizing: border-box;
+  font-size: 1em;
+  transition: border-color 0.3s;
+}
+
+.form-group input:focus {
+  border-color: var(--primary-blue);
+  outline: none;
+}
+
+.submit-button {
+  width: 100%;
+  padding: 12px;
+  background-color: var(--secondary-dark);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.1em;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 10px;
+}
+
+.submit-button:hover {
+  background-color: #3f5166;
+}
+
+/* Hidden content */
+.tab-content {
+  display: none;
+}
+.tab-content.active {
+  display: block;
+}

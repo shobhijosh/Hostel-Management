@@ -1,0 +1,155 @@
+/* --- Hero Section --- */
+.hero-section {
+    /* background-color: var(--dark-blue); */
+    color: var(--text-light);
+    text-align: center;
+    padding: 120px 0;
+    background: url("../../Images/bg-image.png");
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-section h1 {
+    font-size: 3em;
+    font-weight: 700;
+    margin-bottom: 20px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    color: #434343;
+    /* color: var(--text-light); */
+}
+
+.hero-section .subtitle {
+    font-size: 1.15em;
+    font-weight: 300;
+    margin-bottom: 40px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    color: #1b263b;
+}
+
+.hero-actions {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+
+/* --- Section Titles and Subtitles (General) --- */
+.section-title {
+    font-size: 2.2em;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 10px;
+}
+
+.section-subtitle {
+    font-size: 1.05em;
+    font-weight: 400;
+    color: #666;
+    margin-bottom: 50px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* --- Features Section --- */
+.features-section {
+    background-color: white;
+    padding: 80px 0;
+    text-align: center;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+.feature-card {
+    background-color: var(--light-bg);
+    border-radius: 8px;
+    padding: 30px;
+    text-align: left;
+    border: 1px solid var(--border-light);
+    transition: box-shadow 0.3s;
+    cursor: pointer;
+}
+
+.feature-card:hover {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.feature-card i {
+    font-size: 1.8em;
+    color: var(--primary-blue);
+    margin-bottom: 15px;
+}
+
+.feature-card h3 {
+    font-size: 1.1em;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--text-dark);
+}
+
+.feature-card p {
+    font-size: 0.9em;
+    color: #555;
+}
+
+.features-action {
+    margin-top: 30px;
+}
+
+
+/* --- Login Section --- */
+.login-section {
+    background-color: white;
+    padding: 80px 0;
+    text-align: center;
+}
+
+.login-roles {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 40px;
+}
+
+.role-card {
+    background-color: var(--light-bg);
+    border-radius: 8px;
+    padding: 40px 30px;
+    max-width: 350px;
+    text-align: center;
+    border: 1px solid var(--border-light);
+    transition: box-shadow 0.3s;
+}
+
+.role-card:hover {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.role-card i {
+    font-size: 2.5em;
+    color: var(--primary-blue);
+    margin-bottom: 15px;
+}
+
+.role-card h3 {
+    font-size: 1.3em;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--text-dark);
+}
+
+.role-card p {
+    font-size: 0.95em;
+    color: #555;
+    margin-bottom: 25px;
+}

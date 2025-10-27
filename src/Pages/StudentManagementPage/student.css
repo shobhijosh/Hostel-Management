@@ -1,0 +1,324 @@
+/* --- Main Content Area --- */
+.main-student-content {
+    flex-grow: 1;
+    padding: 30px 40px;
+}
+
+/* --- Header & Add Student Button --- */
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.main-header h2 {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--text-color);
+}
+
+.add-student-btn {
+    background-color: var(--primary-blue);
+    color: white;
+    border: none;
+    /* padding: 10px 20px; */
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+/* --- Filter Bar (Search only) --- */
+.filter-bar {
+    display: flex; /* Ensures search box takes available space */
+    margin-bottom: 20px;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    flex-grow: 1; /* Allows search box to fill available space */
+    border: 1px solid var(--input-border);
+    border-radius: 6px;
+    background-color: #fff;
+    padding: 10px 15px;
+    /* Removed max-width to allow full length as requested */
+}
+
+.search-icon {
+    width: 20px;
+    height: 20px;
+    fill: var(--light-text);
+    margin-right: 10px;
+}
+
+.search-box input {
+    flex-grow: 1;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    color: var(--text-color);
+}
+
+.search-box input::placeholder {
+    color: var(--light-text);
+}
+
+/* Removed .dropdowns and .dropdown styling as per request */
+
+/* --- Students Table --- */
+.students-table-container {
+    background-color: var(--sidebar-bg);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+}
+
+.students-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.students-table th {
+    text-align: left;
+    padding: 15px 20px;
+    background-color: #FAFAFA;
+    color: var(--light-text);
+    font-size: 14px;
+    font-weight: 600;
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* .students-table th .sort-icon {
+    display: inline-flex; Use flex to align icon vertically
+    align-items: center;
+    margin-left: 8px; Space between text and icon
+    cursor: pointer;
+    vertical-align: middle;
+    width: 18px; Icon size
+    height: 18px;
+} */
+
+.students-table th .sort-icon svg {
+    width: 100%;
+    height: 100%;
+    fill: var(--light-text); /* Icon color */
+    transition: fill 0.2s;
+}
+
+.students-table th .sort-icon:hover svg {
+    fill: var(--text-color); /* Darker on hover */
+}
+
+
+.students-table td {
+    padding: 15px 20px;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.students-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Adjustments for a more modern look */
+.students-table th:first-child,
+.students-table td:first-child {
+    font-weight: 600; /* Name column slightly bolder */
+}
+
+/* --- Action Buttons (Edit and Delete) --- */
+/* Action Buttons */
+.action-btn {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.85em;
+  font-weight: 500;
+  transition: opacity 0.3s;
+}
+
+.action-btn:hover {
+  opacity: 0.8;
+}
+
+.btn-edit {
+  background-color: var(--primary-blue);
+  color: white;
+}
+
+.btn-delete {
+  background-color: var(--danger-color);
+  color: white;
+}
+
+
+/* Add student page styling */
+/* --- Main Content Area --- */
+/* .main-content {
+    flex-grow: 1;
+    padding: 30px 40px;
+} */
+
+/* --- Header for Add Student Page --- */
+.add-student-header {
+    margin-bottom: 30px;
+}
+
+.add-student-header h2 {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: 8px;
+}
+
+.add-student-header p {
+    font-size: 16px;
+    color: #666666;
+}
+
+/* --- Add Student Form Container --- */
+.add-student-form-container {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgb(0 0 0 / 15%);
+    border: 1px solid #d2d2d2;
+    padding: 40px;
+}
+
+.add-student-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two columns for form fields */
+    gap: 25px 30px; /* Row and column gap */
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group.full-width,.form-actions {
+    grid-column: span 2; /* Make this group span both columns */
+}
+
+
+.form-group label {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 8px;
+}
+
+.input-with-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-with-icon input,
+.select-wrapper select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--input-border);
+    border-radius: 6px;
+    font-size: 15px;
+    color: var(--text-color);
+    transition: border-color 0.2s, box-shadow 0.2s;
+    background-color: white; /* Ensure background is white */
+}
+
+.input-with-icon input:focus,
+.select-wrapper select:focus {
+    outline: none;
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.2); /* Light blue shadow */
+}
+
+.input-with-icon .input-icon {
+    position: absolute;
+    right: 15px;
+    width: 20px;
+    height: 20px;
+    fill: var(--light-text);
+}
+
+.input-with-icon input {
+    padding-right: 45px; /* Make space for the icon */
+}
+
+/* Specific styling for readonly input (Room Type) */
+#roomType {
+    background-color: #F8F9FA; /* Slightly different background for disabled/readonly */
+    border-color: #E0E0E0;
+    color: var(--light-text);
+    cursor: not-allowed;
+}
+
+
+/* Dropdown specific styling */
+.select-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.select-wrapper select {
+    appearance: none; /* Remove default browser arrow */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding-right: 40px; /* Space for custom arrow */
+}
+
+.select-wrapper .dropdown-arrow {
+    position: absolute;
+    right: 15px;
+    width: 20px;
+    height: 20px;
+    fill: var(--light-text);
+    pointer-events: none; /* Make sure clicks go through to the select */
+}
+
+
+/* --- Form Actions (Buttons) --- */
+.form-actions {
+    display: flex;
+    justify-content: flex-end; /* Align buttons to the right */
+    gap: 15px;
+    margin-top: 20px; /* Space above buttons */
+}
+
+.cancel-btn,
+.submit-btn {
+    padding: 12px 25px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.cancel-btn {
+    background-color: transparent;
+    color: var(--light-text);
+    border: 1px solid var(--input-border);
+}
+
+.cancel-btn:hover {
+    background-color: #F0F0F0;
+    color: var(--text-color);
+}
+
+.submit-btn {
+    background-color: var(--primary-blue);
+    color: white;
+    border: none;
+}
+
+.submit-btn:hover {
+    opacity: 0.8;
+}

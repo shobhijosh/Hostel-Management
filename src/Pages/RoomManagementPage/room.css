@@ -1,0 +1,521 @@
+/* --- Main Content Layout --- */
+.main-container {
+  flex-grow: 1;
+  padding: 30px 40px;
+  display: flex;
+  gap: 30px;
+}
+
+.main-room-content {
+  flex: 3;
+  max-width: 65%;
+  padding: 20px 30px;
+  /* Keeps content proportional */
+}
+
+.right-panel {
+  flex: 1;
+  min-width: 300px;
+  max-width: 35%;
+  padding: 40px 20px;
+  /* Keeps content proportional */
+}
+
+/* --- Header & Add Room Button --- */
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.main-header h2 {
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.add-room-btn {
+    background-color: var(--primary-blue);
+    color: white;
+    border: none;
+    /* padding: 10px 20px; */
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+/* .add-room-btn {
+  background-color: var(--primary-blue);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.add-room-btn:hover {
+  background-color: var(--dark-blue);
+} */
+
+/* --- Room Table --- */
+.rooms-table-container {
+  background-color: var(--sidebar-bg);
+  border-radius: 8px;
+  box-shadow: var(--card-shadow);
+  overflow: hidden;
+  margin-top: 20px;
+}
+
+.rooms-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.rooms-table th {
+  text-align: left;
+  padding: 15px 20px;
+  background-color: #fafafa;
+  color: var(--light-text);
+  font-size: 14px;
+  font-weight: 600;
+  border-bottom: 1px solid var(--border-color);
+  text-transform: uppercase;
+}
+
+.rooms-table td {
+  padding: 15px 20px;
+  border-bottom: 1px solid var(--border-color);
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.rooms-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Status Badge Styling */
+.status-badge {
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.status-available {
+  background-color: #e6f7ef;
+  color: #2ecc71;
+}
+
+.status-alloted {
+  background-color: #fdeaea;
+  color: #e74c3c;
+}
+
+/* Action Buttons Styling */
+.action-btns {
+  display: flex;
+  gap: 5px;
+}
+
+.action-btns button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.85em;
+  font-weight: 500;
+  transition: opacity 0.3s;
+}
+
+.action-btns button:hover {
+  opacity: 0.8;
+}
+
+.action-btns .edit-btn {
+  background-color: var(--primary-blue);
+  color: #fff;
+}
+
+.action-btns .vacate-btn {
+  background-color: var(--vacate-color);
+  color: #fff;
+}
+
+.action-btns .delete-btn {
+  background-color: var(--delete-color);
+  color: #fff;
+}
+
+/* --- Right Panel Cards (Shared) --- */
+.right-panel-card {
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  border: 1px solid #d2d2d2;
+  padding: 25px;
+  margin-bottom: 20px;
+}
+
+.right-panel-card h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.right-panel-card .form-group {
+  margin-bottom: 15px;
+}
+
+/* --- Custom Select/Input Styling for Right Panel --- */
+.select-wrapper {
+  position: relative;
+}
+
+.select-wrapper select {
+  width: 100%;
+  padding: 10px 15px;
+  border: 1px solid var(--input-border);
+  border-radius: 6px;
+  font-size: 15px;
+  color: var(--text-color);
+  background-color: white;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  cursor: pointer;
+}
+
+.select-wrapper .dropdown-arrow {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  fill: var(--light-text);
+  pointer-events: none;
+}
+
+.action-button {
+  width: 100%;
+  background-color: var(--primary-blue);
+  color: white;
+  border: none;
+  padding: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 5px;
+  /* Space between last dropdown and button */
+}
+
+/* --- Room Status Check Styles (Reused from previous) --- */
+.search-room-box {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  background-color: #ffffff;
+  margin-bottom: 20px;
+}
+
+.search-room-box input {
+  flex-grow: 1;
+  padding: 10px 15px;
+  border: none;
+  outline: none;
+  font-size: 15px;
+  width: 100%;
+  border-radius: 6px;
+}
+
+.search-results {
+  padding: 15px;
+  border-radius: 6px;
+  text-align: center;
+  font-weight: 500;
+  font-size: 15px;
+}
+
+.room-status-not-found {
+  background-color: #f3f4f6;
+  color: var(--light-text);
+  border: 1px solid #e5e7eb;
+}
+
+/* --- Global Styles & Reset --- */
+/* :root {
+    --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    --dropzone-border: #D1D5DB;
+    --dropzone-bg: #F9FAFB;
+    --dropzone-text: #6B7280;
+} */
+
+
+/* Styling for add new room */
+/* --- Main Content Area --- */
+.room-content {
+    flex-grow: 1;
+    padding: 30px 40px;
+}
+
+/* --- Header for Add New Room Page --- */
+.add-room-header {
+    margin-bottom: 30px;
+}
+
+.add-room-header h2 {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: 8px;
+}
+
+.add-room-header p {
+    font-size: 16px;
+    color: var(--light-text);
+}
+
+/* --- Add New Room Form Container --- */
+.add-room-form-container {
+    /* background-color: var(--sidebar-bg); */
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    border: 1px solid #d2d2d2;
+    padding: 40px;
+}
+
+.add-room-form {
+    display: grid;
+    grid-template-columns: 1fr; /* Default to single column for titles */
+    gap: 25px 30px;
+}
+
+.form-section-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 5px; /*Space between title and first field*/
+    grid-column: span 2; /*Ensure it spans if fields are 2-col*/
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Grid layout for specific form groups */
+.add-room-form .grid-2-col {
+    grid-column: span 1; /* These elements will fit side-by-side if parent is 2-col */
+}
+
+/* For full width elements, ensure they span both columns when the grid is 2-col */
+.add-room-form .full-width {
+    grid-column: span 2;
+}
+
+/* Adjust grid for fields after a title to be 2-column */
+.form-section-title + .form-group.grid-2-col {
+    grid-column: span 1;
+}
+
+.add-room-form {
+    /* Apply 2-column grid directly to the form for most fields */
+    grid-template-columns: 1fr 1fr;
+}
+
+/* Ensure description, media upload, and buttons span full width */
+.add-room-form .form-group.full-width,
+.add-room-form .form-section-title.full-width,
+.add-room-form .form-actions.full-width {
+    grid-column: 1 / -1; /* Spans all columns */
+}
+
+.form-group label {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 8px;
+}
+
+/* Input with Prefix/Suffix (e.g., Room No, Price, Capacity) */
+.input-prefix-wrapper,
+.input-suffix-wrapper,
+.select-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-prefix-wrapper .prefix {
+    position: absolute;
+    left: 15px;
+    color: var(--light-text);
+    font-size: 15px;
+    font-weight: 500;
+    pointer-events: none;
+}
+.input-suffix-wrapper .suffix-icon {
+    position: absolute;
+    right: 15px;
+    width: 20px;
+    height: 20px;
+    fill: var(--light-text);
+    pointer-events: none;
+}
+
+.input-prefix-wrapper input,
+textarea,
+.select-wrapper select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--input-border);
+    border-radius: 6px;
+    font-size: 15px;
+    color: var(--text-color);
+    transition: border-color 0.2s, box-shadow 0.2s;
+    background-color: white;
+}
+
+.input-prefix-wrapper input:focus,
+textarea:focus,
+.select-wrapper select:focus {
+    outline: none;
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.2);
+}
+
+/* Adjust padding for inputs with prefix/suffix */
+.input-prefix-wrapper input[type="text"] {
+    padding-left: 40px; /* Space for prefix */
+}
+.input-suffix-wrapper input[type="text"] {
+    padding-right: 45px; /* Space for suffix icon */
+}
+
+/* Textarea specific */
+textarea {
+    resize: vertical; /* Allow vertical resizing only */
+    min-height: 80px;
+}
+
+/* Select dropdown specific */
+.select-wrapper select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding-right: 40px; /* Space for custom arrow */
+    cursor: pointer;
+}
+
+.select-wrapper .dropdown-arrow {
+    position: absolute;
+    right: 15px;
+    width: 20px;
+    height: 20px;
+    fill: var(--light-text);
+    pointer-events: none;
+}
+
+/* --- Media Upload Section --- */
+.media-upload-heading {
+    margin-top: 20px; /*fSpace above media upload section
+    /* margin-bottom: 20px; */
+}
+
+.dropzone-container {
+    padding-bottom: 0 !important; /* Remove bottom padding from form-group */
+}
+
+.dropzone {
+    border: 2px dashed var(--dropzone-border);
+    border-radius: 8px;
+    background-color: var(--dropzone-bg);
+    padding: 30px;
+    text-align: center;
+    color: var(--dropzone-text);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 180px; /* Adjust as needed */
+}
+
+.dropzone .upload-icon {
+    width: 40px;
+    height: 40px;
+    fill: var(--primary-blue);
+    margin-bottom: 15px;
+}
+
+.dropzone .upload-images-btn {
+    background-color: var(--primary-blue);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin-bottom: 10px;
+}
+
+.dropzone .upload-images-btn:hover {
+    background-color: var(--dark-blue);
+}
+
+.dropzone p {
+    font-size: 14px;
+    margin: 0;
+}
+.dropzone .upload-info {
+    font-size: 13px;
+    color: var(--light-text);
+    margin-top: 5px;
+}
+
+/* --- Form Actions (Buttons) --- */
+/* .form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-top: 40px; Space above buttons
+}*/
+
+/*.cancel-btn,
+.add-room-submit-btn {
+    padding: 12px 25px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.cancel-btn {
+    background-color: transparent;
+    color: var(--light-text);
+    border: 1px solid var(--input-border);
+}
+
+.cancel-btn:hover {
+    background-color: #F0F0F0;
+    color: var(--text-color);
+}
+
+.add-room-submit-btn {
+    background-color: var(--primary-blue);
+    color: white;
+    border: none;
+}
+
+.add-room-submit-btn:hover {
+    background-color: var(--dark-blue);
+} */
