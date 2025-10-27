@@ -1,0 +1,51 @@
+/* --- Navigation Bar --- */
+.navbar {
+    background-color: white;
+    padding: 15px 0;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Styling the logo container */
+.logo {
+    display: flex;
+    align-items: center; 
+    cursor: pointer;
+}
+.logo a {
+    text-decoration: none; 
+    display: flex;
+    height: 100%;
+}
+.logo img {
+    max-height: 40px; 
+    width: auto;
+    display: block; 
+}
+.logo img:hover {
+    opacity: 0.9;
+    transition: opacity 0.3s;
+}
+
+.navbar nav a {
+    text-decoration: none;
+    color: var(--text-dark);
+    margin: 0 15px;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.navbar nav a:hover {
+    color: var(--primary-blue);
+}
+
+.navbar .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}

@@ -1,0 +1,33 @@
+.table-container {
+  background-color: var(--card-bg);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgb(0 0 0 / 15%);
+  border: 1px solid #d2d2d2;
+  overflow-x: auto;
+  /* Ensure table is responsive horizontally */
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  /* min-width: 900px; */
+  /* Minimum width for readability */
+}
+
+.table th,.table td {
+  padding: 15px;
+  text-align: center;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.table th {
+  background-color: var(--content-bg);
+  color: var(--text-dark);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.85em;
+}
+
+.table tr:last-child td {
+  border-bottom: none;
+}

@@ -1,0 +1,230 @@
+/* --- Global Variables and Reset --- */
+/* :root {
+    --primary-blue: #1A73E8;
+    --light-blue: #E3F2FD;
+    --text-color: #333333;
+    --light-text: #666666;
+    --input-border: #D1D5DB;
+    --background-color: #F8F9FA;
+    --card-bg: #FFFFFF;
+    --card-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    --font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+} */
+
+/* --- Main Content Layout --- */
+.container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.intro {
+    margin-bottom: 40px;
+}
+
+.intro h1 {
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: 10px;
+}
+
+.intro p {
+    font-size: 16px;
+    color: var(--light-text);
+}
+
+.content-layout {
+    display: flex;
+    gap: 30px;
+}
+
+.left-panel {
+    flex: 2; /* Form takes up about 2/3 of the width */
+    min-width: 60%;
+}
+
+.right-panel {
+    flex: 1; /* Info takes up about 1/3 of the width */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    min-width: 300px;
+}
+
+/* --- Form Styling --- */
+.contact-form {
+    background-color: var(--card-bg);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: var(--card-shadow);
+}
+
+.form-row {
+    display: flex;
+    gap: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    flex-grow: 1;
+    width: 100%;
+}
+
+.form-group label {
+    display: block;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 8px;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--input-border);
+    border-radius: 6px;
+    font-size: 15px;
+    color: var(--text-color);
+    background-color: white;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.2);
+}
+
+textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.btn-send-message {
+    width: 200px; /* Width matching the image */
+    padding: 12px 20px;
+    font-weight: 600;
+    background-color: var(--primary-blue);
+    border: none;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.btn-send-message:hover {
+    background-color: #1660CC;
+}
+
+/* --- Right Panel Cards --- */
+.card {
+    background-color: var(--card-bg);
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: var(--card-shadow);
+}
+
+.card h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 20px;
+}
+
+/* Contact Info Card */
+.contact-info .info-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 15px;
+    line-height: 1.4;
+}
+
+.contact-info .info-item i {
+    font-size: 18px;
+    margin-right: 15px;
+    flex-shrink: 0;
+    padding-top: 2px;
+}
+
+.contact-info .info-item div {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-info .label {
+    font-size: 14px;
+    color: var(--light-text);
+    margin-bottom: 2px;
+}
+
+.contact-info .value {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.icon-blue {
+    color: var(--primary-blue);
+}
+
+/* Map Placeholder Card */
+.map-placeholder {
+    padding: 0; /* Remove padding to allow image to fill the card */
+    overflow: hidden;
+}
+.map-placeholder img {
+    display: block;
+}
+
+
+/* Connect with Us Card */
+.social-icons a {
+    color: var(--light-text);
+    font-size: 24px;
+    margin-right: 15px;
+    transition: color 0.2s;
+}
+
+.social-icons a:hover {
+    color: var(--primary-blue);
+}
+
+/* --- Footer Styling --- */
+.footer {
+    padding: 20px;
+    text-align: center;
+    font-size: 13px;
+    color: var(--light-text);
+    border-top: 1px solid #EAEAEA;
+    margin-top: 50px;
+    background-color: var(--card-bg);
+}
+
+/* --- Responsive Adjustments (for smaller screens) --- */
+@media (max-width: 992px) {
+    .header {
+        padding: 15px 20px;
+    }
+    
+    .nav {
+        display: none; /* Hide navigation on small screens */
+    }
+
+    .content-layout {
+        flex-direction: column;
+    }
+
+    .left-panel,
+    .right-panel {
+        min-width: 100%;
+        max-width: 100%;
+    }
+
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+}

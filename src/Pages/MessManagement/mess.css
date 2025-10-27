@@ -1,0 +1,197 @@
+.main-mess-content {
+  flex-grow: 1;
+  padding: 30px 40px;
+}
+
+/* --- Header for Mess Menu Page --- */
+.mess-menu-header {
+  margin-bottom: 30px;
+}
+
+.mess-menu-header h2 {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--text-color);
+  margin-bottom: 8px;
+}
+
+.mess-menu-header p {
+  font-size: 16px;
+  color: var(--light-text);
+}
+
+/* Modal styling */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Dimming effect */
+  display: none; /* Hidden by default */
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: #fff;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 550px; /* Max width like in the image */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  border: 1px solid #d2d2d2;
+  padding: 20px 30px;
+  position: relative;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.modal-header h3 {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-color);
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 28px;
+  color: var(--light-text);
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+}
+
+.modal-form .form-group {
+  margin-bottom: 20px;
+}
+
+.modal-form label {
+  display: block;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-color);
+  margin-bottom: 8px;
+}
+
+.modal-form input[type="text"] {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid var(--input-border);
+  border-radius: 6px;
+  font-size: 15px;
+  color: var(--text-color);
+  background-color: white;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.modal-form input[type="text"]:focus {
+  outline: none;
+  border-color: var(--primary-blue);
+  box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.2);
+}
+
+/* Styling for disabled day field */
+.modal-form input:disabled {
+  background-color: #f3f4f6;
+  color: var(--light-text);
+  cursor: not-allowed;
+  border-color: #e5e7eb;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.cancel-modal-btn,
+.submit-modal-btn {
+  padding: 12px 20px;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.cancel-modal-btn {
+  background-color: transparent;
+  color: var(--light-text);
+  border: 1px solid var(--input-border);
+}
+
+.cancel-modal-btn:hover {
+  background-color: #f0f0f0;
+  color: var(--text-color);
+}
+
+.submit-modal-btn {
+  background-color: var(--primary-blue);
+  color: white;
+  border: none;
+}
+
+.submit-modal-btn:hover {
+  background-color: var(--dark-blue);
+}
+
+/* --- Mess Menu Table Container --- */
+/* .mess-menu-table-container {
+  background-color: var(--sidebar-bg);
+  border-radius: 8px;
+  box-shadow: var(--card-shadow);
+  overflow: hidden;
+}
+
+.mess-menu-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.mess-menu-table th {
+  text-align: left;
+  padding: 15px 20px;
+  background-color: #fafafa;
+  color: var(--light-text);
+  font-size: 14px;
+  font-weight: 600;
+  border-bottom: 1px solid var(--border-color);
+  text-transform: uppercase;
+}
+
+.mess-menu-table td {
+  padding: 15px 20px;
+  border-bottom: 1px solid var(--border-color);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+.mess-menu-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+Edit Button in Table
+.edit-mess-btn {
+  background: none;
+  border: none;
+  color: var(--primary-blue);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 6px 10px;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.edit-mess-btn:hover {
+  background-color: var(--sidebar-active);
+} */
