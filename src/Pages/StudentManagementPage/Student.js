@@ -8,11 +8,12 @@ import { Link, useNavigate } from 'react-router'
 
 const Student = () => {
     // This is the sample data used, it will be replaced by original data later
-    const tableHeading = ["Name", "Student Id", "Course", "Room no.", "Room type", "Action"];
+    const tableHeading = ["Name", "Student Id","Contact No.", "Course", "Room no.", "Room type", "Action"];
     const tableData = [
         {
             name: 'Liam Harper',
             id: 'S001',
+            contact_no:'9876543219',
             course: 'Computer Science',
             room_no: '101',
             room_type: 'Single'
@@ -20,27 +21,31 @@ const Student = () => {
         {
             name: 'Olivia Bennett',
             id: 'S002',
-            course: 'Electrical Engineering',
+            contact_no:'9873443219',
+            course: 'Electrical',
             room_no: '102',
             room_type: 'Double'
         },
         {
             name: 'Noah Carter',
             id: 'S003',
-            course: 'Mechanical Engineering',
+            contact_no:'9876541239',
+            course: 'Mechanical',
             room_no: '103',
             room_type: 'Single'
         },
         {
             name: 'Emma Davis',
             id: 'S004',
-            course: 'Business Administration',
+            contact_no:'9872223219',
+            course: 'BBA',
             room_no: '104',
             room_type: 'Double'
         },
         {
             name: 'Jackson Evans',
             id: 'S005',
+            contact_no:'9876549128',
             course: 'Applied Physics',
             room_no: '105',
             room_type: 'Single'
@@ -48,7 +53,8 @@ const Student = () => {
         {
             name: 'Ava Foster',
             id: 'S005',
-            course: 'Civil Engineering',
+            contact_no:'9436543219',
+            course: 'Civil',
             room_no: '106',
             room_type: 'Double'
         },
@@ -99,6 +105,7 @@ const TableRow = (request) => {
         <>
             <td>{request.name}</td>
             <td>{request.id}</td>
+            <td>{request.contact_no}</td>
             <td>{request.course}</td>
             <td>{request.room_no}</td>
             <td>{request.room_type}</td>

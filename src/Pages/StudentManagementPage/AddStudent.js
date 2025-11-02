@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react'
+import React, { useEffect } from 'react'
 import Sidebar from '../../Components/SideBar/Sidebar'
 import Footer from '../../Components/Footer/Footer'
 import { useNavigate } from 'react-router'
@@ -36,6 +36,16 @@ const AddStudent = () => {
                                 <div className="input-with-icon">
                                     <input type="text" id="studentID" placeholder="Enter student ID" />
                                     <svg className="input-icon" viewBox="0 0 24 24"><path d="M17 3H7c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H7V5h10v14zm-5-8h-1V9h-1v2h-1v-2H8v2h-.5c-.28 0-.5.22-.5.5v3c0 .28.22.5.5.5H11v-3.5c0-.28-.22-.5-.5-.5z" /></svg>
+                                </div>
+                            </div>
+
+                            <div className="form-group">
+                                <label htmlFor="contactNo">Contact No.</label>
+                                <div className="input-with-icon">
+                                    <input type="text" id="contactNo" placeholder="Enter contact number" />
+                                    <svg className='input-icon' viewBox="0 0 24 24">
+                                        <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1v3.5c0 .55-.45 1-1 1C10.74 21 3 13.26 3 5c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.75-.24 1.02l-2.2 2.2z" />
+                                    </svg>
                                 </div>
                             </div>
 

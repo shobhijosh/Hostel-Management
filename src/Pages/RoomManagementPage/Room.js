@@ -68,62 +68,6 @@ const Room = () => {
                         </div>
                     </header>
 
-                    {/* <section className="rooms-table-container">
-                        <h3>Room Availability</h3>
-                        <table className="rooms-table">
-                            <thead>
-                                <tr>
-                                    <th>Room No.</th>
-                                    <th>Room Type</th>
-                                    <th>Status</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>101</td>
-                                    <td>Single</td>
-                                    <td><span className="status-badge status-alloted">Alloted</span></td>
-                                    <td className="action-buttons">
-                                        <button className="edit-btn">Edit</button>
-                                        <button className="vacate-btn">Vacate</button>
-                                        <button className="delete-btn">Delete</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>102</td>
-                                    <td>Double</td>
-                                    <td><span className="status-badge status-available">Available</span></td>
-                                    <td className="action-buttons">
-                                        <button className="edit-btn">Edit</button>
-                                        <button className="vacate-btn">Vacate</button>
-                                        <button className="delete-btn">Delete</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>103</td>
-                                    <td>Triple</td>
-                                    <td><span className="status-badge status-available">Available</span></td>
-                                    <td className="action-buttons">
-                                        <button className="edit-btn">Edit</button>
-                                        <button className="vacate-btn">Vacate</button>
-                                        <button className="delete-btn">Delete</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>104</td>
-                                    <td>Double</td>
-                                    <td><span className="status-badge status-alloted">Alloted</span></td>
-                                    <td className="action-buttons">
-                                        <button className="edit-btn">Edit</button>
-                                        <button className="vacate-btn">Vacate</button>
-                                        <button className="delete-btn">Delete</button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </section> */}
-
                     <div>
                         <h3 style={{marginBottom:'10px'}}>Room Availability</h3>
                         <TableComp heading={tableHeading} data={tableData} row={TableRow} />
