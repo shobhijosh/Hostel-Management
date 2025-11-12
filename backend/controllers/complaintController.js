@@ -5,7 +5,7 @@ const getAllComplaints = async(req,res)=>{
     try {
         const complaints = await Complaints.find()
         if(!complaints){
-            res.status(404).json({message:"Complaints not found"})
+            res.status(404).json({success:false,message:"Complaints not found"})
         }
         res.status(200).json({success:true,data:complaints})
     } catch (error) {
@@ -18,11 +18,13 @@ const addComplaint = async(req,res)=>{
     const details = req.body
     const existingComplaint = await Complaints.findById(details.student)
     if(existingComplaint){
-        res.status(409).json({message:"Complaint already exists"})
+        res.status(409).json({success:false,message:"Complaint already exists"})
     }
-    const newComplaint = new Complaints(details)
-    await newComplaint.save()
-    res.status(200).json({success:true,message:"Complaint added successfully"})
+    else{
+        const newComplaint = new Complaints(details)
+        await newComplaint.save()
+        res.status(200).json({success:true,message:"Complaint added successfully"})
+    }
 }
 
 // Update complaint details
@@ -33,7 +35,7 @@ const updateComplaintDetails = async(req,res)=>{
         const newDetails = {assignedTo,status}
         const complaintDetails = await Complaints.findById(id)
         if(!complaintDetails){
-            res.status(404).json({message:"No such complaint found"})
+            res.status(404).json({success:false,message:"No such complaint found"})
         }
         const updatedDetails = await Complaints.findByIdAndUpdate(id,{$set:newDetails},{new:true,runValidators:true})
         res.status(200).json({success:true,data:updatedDetails})

@@ -2,9 +2,9 @@ import React from 'react'
 import './footer.css'
 import { Link } from 'react-router'
 
-const Footer = () => {
+const Footer = ({loading}) => {
     return (
-        <div className="main-footer">
+        <div className="main-footer" style={loading ? {opacity:0.3,pointerEvents:'none',userSelect:'none'} : {}}>
             <div className="container footer-grid">
                 <div className="footer-col about-col">
                     <h4>HostelHub</h4>

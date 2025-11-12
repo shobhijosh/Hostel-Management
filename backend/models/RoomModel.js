@@ -27,7 +27,7 @@ const RoomSchema = new Schema({
     },
     media: {
         type: [String],
-        required: [true, "At least one image URL is required"],
+        // required: [true, "At least one image URL is required"],
         validate: {
             validator: function (arr) {
                 return arr.length <= 5

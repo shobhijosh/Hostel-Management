@@ -4,6 +4,7 @@ const StudentSchema = new Schema({
     fullName:{
         type:String,
         required:[true,"Full Name is required"],
+        minLength:[1,"Full Name cannot be empty"]
     },
     studentID:{
         type:String,

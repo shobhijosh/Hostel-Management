@@ -3,64 +3,92 @@ import './mess.css'
 import Footer from '../../Components/Footer/Footer'
 import Sidebar from '../../Components/SideBar/Sidebar'
 import TableComp from '../../Components/Table/TableComp'
+import { Mosaic } from 'react-loading-indicators'
+import { Alert } from '@mui/material'
+import { useLocation, useNavigate } from 'react-router'
 
 const Mess = () => {
-    // stotes whether the modal is open or close
+    const navigate = useNavigate()
+    const {message,success} = useLocation().state || {}
+
+    // Manages the visibility of loader
+    const [loading, setLoading] = useState(true)
+
+    // Making alert visible and hidden
+    const [alert,setAlert] = useState(false);
+
+    // states whether the modal is open or close
     const [isOpen, setIsOpen] = useState(false)
 
-    const tableHeading = ['Day', 'Breakfast', 'Lunch', 'Dinner', 'Actions']
-    const tableData = [
-        {
-            day: 'Monday',
-            breakfast: 'Poha',
-            lunch: 'Dal Fry, Rice, Roti',
-            dinner: 'Paneer Butter Masala, Roti, Rice'
-        },
-        {
-            day: 'Tuesday',
-            breakfast: 'Upma',
-            lunch: 'Chole Bhature',
-            dinner: 'Aloo Gobi, Roti, Rice'
-        },
-        {
-            day: 'Wednesday',
-            breakfast: 'Idli Sambar',
-            lunch: 'Rajma Chawal',
-            dinner: 'Mix Veg, Roti, Rice'
-        },
-        {
-            day: 'Thursday',
-            breakfast: 'Dosa',
-            lunch: 'Kadhi Chawal',
-            dinner: 'Bhindi Fry, Roti, Rice'
-        },
-        {
-            day: 'Friday',
-            breakfast: 'Paratha',
-            lunch: 'Dal Makhani, Rice, Roti',
-            dinner: 'Chana Masala, Roti, Rice'
-        },
-        {
-            day: 'Saturday',
-            breakfast: 'Sandwich',
-            lunch: 'Veg Biryani, Raita',
-            dinner: 'Dum Aloo, Roti, Rice'
-        },
-        {
-            day: 'Sunday',
-            breakfast: 'Puri Sabji',
-            lunch: 'Pav Bhaji',
-            dinner: 'Special Thali'
-        },
-    ]
+    // Store the table data
+    const [tableData,setTableData] = useState([])
+    // const [tableData, setTableData] = useState([{ day: 'Monday', breakfast: 'Poha', lunch: 'Dal Fry, Rice, Roti', dinner: 'Paneer Butter Masala, Roti, Rice' }, { day: 'Tuesday', breakfast: 'Upma', lunch: 'Chole Bhature', dinner: 'Aloo Gobi, Roti, Rice' }, { day: 'Wednesday', breakfast: 'Idli Sambar', lunch: 'Rajma Chawal', dinner: 'Mix Veg, Roti, Rice' }, { day: 'Thursday', breakfast: 'Dosa', lunch: 'Kadhi Chawal', dinner: 'Bhindi Fry, Roti, Rice' }, { day: 'Friday', breakfast: 'Paratha', lunch: 'Dal Makhani, Rice, Roti', dinner: 'Chana Masala, Roti, Rice' }, { day: 'Saturday', breakfast: 'Sandwich', lunch: 'Veg Biryani, Raita', dinner: 'Dum Aloo, Roti, Rice' }, { day: 'Sunday', breakfast: 'Puri Sabji', lunch: 'Pav Bhaji', dinner: 'Special Thali' }])
 
-    // Scrolls the page to top when the component mounts
+    const tableHeading = ['Day', 'Breakfast', 'Lunch', 'Dinner', 'Actions']
+
+    // Store the input field values of the menu modal
+    const [day,setDay] = useState()
+    const [breakfast,setBreakfast] = useState('')
+    const [lunch,setLunch] = useState('')
+    const [dinner,setDinner] = useState('')
+
+    const handleOpen = (data) => {
+        setDay(data.day)
+        setBreakfast(data.breakfast)
+        setLunch(data.lunch)
+        setDinner(data.dinner)
+        setIsOpen(true)
+    }
+    const handleSave = async()=>{
+        const getId = tableData.find((data)=>data.day === day)._id
+        const body = {
+            'day':day,'breakfast':breakfast,'lunch':lunch,'dinner':dinner
+        }
+        const response = await fetch(`http://localhost:5000/api/menuItems/edit/${getId}`,{
+            method:'PUT',
+            headers:{
+                'Content-type':'Application/json',
+                'accept':'*/*',
+            },
+            body:JSON.stringify(body)
+        })
+        const json = await response.json()
+        navigate('/mess',{state:{success:json.success,message:json.message}})
+        window.location.reload()
+        setIsOpen(false)
+    }
+
+    // Fetch data from the db
+    useEffect(()=>{
+        const fetchData = async()=>{
+            setLoading(true)
+            const response = await fetch('http://localhost:5000/api/menuItems',{method:'GET'})
+            const json = await response.json()
+            if(json.success){
+                setTableData(json.data)
+            }
+        }
+
+        fetchData()
+        Promise.all([fetchData()]).then(()=>setLoading(false)).catch((error)=>{
+            console.log(error);
+            setLoading(false);
+        })
+    },[])
+
+
     useEffect(() => {
+        if(message) setAlert(true)
+        setTimeout(() => {
+            setAlert(false)
+        }, 5000);
+
+        // Scrolls the page to top when the component mounts
         window.scrollTo(0, 0)
-    }, [])
+    }, [loading])
     return (
         <>
-            <div className='mainContainer'>
+            <div className='mainContainer' style={loading ? { opacity: 0.3, pointerEvents: 'none', userSelect: 'none' } : {}}>
                 <Sidebar />
                 <main className="main-mess-content">
                     <header className="mess-menu-header">
@@ -69,121 +97,64 @@ const Mess = () => {
                     </header>
 
                     <div>
-                        <TableComp heading={tableHeading} data={tableData} row={TableRow} />
+                        <TableComp heading={tableHeading} data={tableData} row={TableRow} modal={handleOpen} />
                     </div>
-
-                    {/* <section className="mess-menu-table-container">
-                        <table className="mess-menu-table">
-                            <thead>
-                                <tr>
-                                    <th>Day</th>
-                                    <th>Breakfast</th>
-                                    <th>Lunch</th>
-                                    <th>Dinner</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Monday</td>
-                                    <td>Poha</td>
-                                    <td>Dal Fry, Rice, Roti</td>
-                                    <td>Paneer Butter Masala, Roti, Rice</td>
-                                    <td><button className="edit-mess-btn" onclick="alert('Edit Monday\'s menu')">Edit</button></td>
-                                </tr>
-                                <tr>
-                                    <td>Tuesday</td>
-                                    <td>Upma</td>
-                                    <td>Chole Bhature</td>
-                                    <td>Aloo Gobi, Roti, Rice</td>
-                                    <td><button className="edit-mess-btn" onclick="alert('Edit Tuesday\'s menu')">Edit</button></td>
-                                </tr>
-                                <tr>
-                                    <td>Wednesday</td>
-                                    <td>Idli Sambar</td>
-                                    <td>Rajma Chawal</td>
-                                    <td>Mix Veg, Roti, Rice</td>
-                                    <td><button className="edit-mess-btn" onclick="alert('Edit Wednesday\'s menu')">Edit</button></td>
-                                </tr>
-                                <tr>
-                                    <td>Thursday</td>
-                                    <td>Dosa</td>
-                                    <td>Kadhi Chawal</td>
-                                    <td>Bhindi Fry, Roti, Rice</td>
-                                    <td><button className="edit-mess-btn" onclick="alert('Edit Thursday\'s menu')">Edit</button></td>
-                                </tr>
-                                <tr>
-                                    <td>Friday</td>
-                                    <td>Paratha</td>
-                                    <td>Dal Makhani, Rice, Roti</td>
-                                    <td>Chana Masala, Roti, Rice</td>
-                                    <td><button className="edit-mess-btn" onclick="alert('Edit Friday\'s menu')">Edit</button></td>
-                                </tr>
-                                <tr>
-                                    <td>Saturday</td>
-                                    <td>Sandwich</td>
-                                    <td>Veg Biryani, Raita</td>
-                                    <td>Dum Aloo, Roti, Rice</td>
-                                    <td><button className="edit-mess-btn" onclick="alert('Edit Saturday\'s menu')">Edit</button></td>
-                                </tr>
-                                <tr>
-                                    <td>Sunday</td>
-                                    <td>Puri Sabji</td>
-                                    <td>Pav Bhaji</td>
-                                    <td>Special Thali</td>
-                                    <td><button className="edit-mess-btn" onclick="alert('Edit Sunday\'s menu')">Edit</button></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </section> */}
                 </main>
+
+                {/* Menu modal */}
+                {isOpen && <div id="editMenuModal" style={isOpen ? {display:'flex'}:{display:'none'}} className="modal-overlay">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <h3 id="modalTitle">Edit Menu for {day}</h3>
+                            <button className="close-btn" onClick={()=> setIsOpen(false)}>&times;</button>
+                        </div>
+
+                        <form id="menuForm" className="modal-form">
+                            <div className="form-group">
+                                <label htmlFor="modalDay">Day</label>
+                                <input type="text" id="modalDay" name='day' value={day} disabled />
+                                {/* <input type="text" id="originalDay" /> */}
+                            </div>
+
+                            <div className="form-group">
+                                <label htmlFor="modalBreakfast">Breakfast</label>
+                                <input type="text" id="modalBreakfast" name='breakfast' onChange={(e)=>setBreakfast(e.target.value)} value={breakfast || ''} placeholder="Enter new breakfast menu" />
+                            </div>
+
+                            <div className="form-group">
+                                <label htmlFor="modalLunch">Lunch</label>
+                                <input type="text" id="modalLunch" name='lunch' onChange={(e)=>setLunch(e.target.value)} value={lunch || ''} placeholder="Enter new lunch menu" />
+                            </div>
+
+                            <div className="form-group">
+                                <label htmlFor="modalDinner">Dinner</label>
+                                <input type="text" id="modalDinner" name='dinner' onChange={(e)=>setDinner(e.target.value)} value={dinner || ''} placeholder="Enter new dinner menu" />
+                            </div>
+
+                            <div className="modal-actions">
+                                <button type="button" className="cancel-modal-btn" onClick={()=>setIsOpen(false)}>Cancel</button>
+                                <button type="button" className="submit-modal-btn" onClick={()=>handleSave()}>Save Changes</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>}
+
             </div>
             <Footer />
 
-            {/* Menu edit modal */}
-            <div id="editMenuModal" className="modal-overlay">
-                <div className="modal-content">
-                    <div className="modal-header">
-                        <h3 id="modalTitle">Edit Menu for [Day]</h3>
-                        <button className="close-btn">&times;</button>
-                    </div>
+            {/* Alert component */}
+            {alert && <Alert variant="filled" style={{ position: 'fixed', top: '10px', left: '50%' }} severity={success === true ? 'success' : 'error'}>{message}</Alert>}
 
-                    <form id="menuForm" className="modal-form">
-                        <div className="form-group">
-                            <label htmlFor="modalDay">Day</label>
-                            <input type="text" id="modalDay" disabled />
-                            <input type="hidden" id="originalDay" />
-                        </div>
-
-                        <div className="form-group">
-                            <label htmlFor="modalBreakfast">Breakfast</label>
-                            <input type="text" id="modalBreakfast" placeholder="Enter new breakfast menu" />
-                        </div>
-
-                        <div className="form-group">
-                            <label htmlFor="modalLunch">Lunch</label>
-                            <input type="text" id="modalLunch" placeholder="Enter new lunch menu" />
-                        </div>
-
-                        <div className="form-group">
-                            <label htmlFor="modalDinner">Dinner</label>
-                            <input type="text" id="modalDinner" placeholder="Enter new dinner menu" />
-                        </div>
-
-                        <div className="modal-actions">
-                            <button type="button" className="cancel-modal-btn">Cancel</button>
-                            <button type="button" className="submit-modal-btn">Save Changes</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
+            {/* Returns the loading component if the loading is true else returns an empty component */}
+            {loading ? <Mosaic color={["#32cd32", "#327fcd", "#cd32cd", "#cd8032"]} size="large" text="Loading" textColor="#32cd32" /> : <React.Fragment />}
         </>
     )
 }
 
 export default Mess
 
-const TableRow = (request) => {
+const TableRow = (request, studentNames, roomNumbers, modal) => {
+    const data = { day: request.day, breakfast: request.breakfast, lunch: request.lunch, dinner: request.dinner }
     return (
         <>
             <td>{request.day}</td>
@@ -191,7 +162,7 @@ const TableRow = (request) => {
             <td>{request.lunch}</td>
             <td>{request.dinner}</td>
             <td className='action-btns'>
-                <button className="action-btn edit-btn">Edit</button>
+                <button className="action-btn edit-btn" onClick={() => modal(data)}>Edit</button>
             </td>
         </>
     )

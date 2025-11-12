@@ -122,26 +122,17 @@
 .chart-placeholder {
   flex: 1;
   /* Each div takes equal width */
-  height: 250px;
+  /* height: 250px; */
   border-radius: 8px;
   padding: 15px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   font-weight: 600;
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
   font-size: 1.2em;
-}
-
-.chart-placeholder.color-1 {
-  background-color: #4db6ac;
-  /* Sample Teal */
-}
-
-.chart-placeholder.color-2 {
-  background-color: #81a4e2;
-  /* Sample Light Blue */
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+  border: 1px solid #cfcfcf;
 }
 
 /* --- Room Requests Table --- */

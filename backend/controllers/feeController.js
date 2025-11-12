@@ -5,7 +5,7 @@ const getAllStudentFees = async(req,res)=>{
     try {
         const getAllFees = await Fees.find()
         if(!getAllFees){
-            res.status(404).json({message:"No record found"})
+            res.status(404).json({success:false,message:"No record found"})
         }
         res.status(200).json({success:true,data:getAllFees})
     } catch (error) {
@@ -19,7 +19,8 @@ const addFeeDetails = async(req,res)=>{
         const details = req.body
         const feeDetails = new Fees(details)
         await feeDetails.save()
-        res.status(200).json({success:true,message:"Fee details added successfully"})
+        const allFees = await Fees.find()
+        res.status(200).json({success:true,message:"Fee details added successfully",data:allFees})
     } catch (error) {
         res.status(500).json({ success: false, message: `Internal server error ---- ${error.message}` })
     }
@@ -31,7 +32,7 @@ const updateFeeDetails = async (req, res) => {
         const { id } = req.params
         const details = await Fees.findById(id)
         if (!details) {
-            res.status(404).json({message: "Student not found" })
+            res.status(404).json({success:false,message: "Student not found" })
         }
         const dueAmount = req.body.dueAmount
         const newDetails = {
@@ -55,7 +56,7 @@ const depositFees = async(req,res)=>{
     
     const feeRecord = await Fees.findById(id)
     if(!feeRecord){
-        return res.status(404).json({message:"Fee record not found"})
+        return res.status(404).json({success:false,message:"Fee record not found"})
     }
     if(feeRecord.paymentStatus === 'Paid'){
         return res.status(400).json({message:"Fees already paid"})
@@ -83,4 +84,18 @@ const depositFees = async(req,res)=>{
     return res.status(200).json({success:true,message:'Payment recorded successfully',data:updateRecord})
 }
 
-module.exports = {getAllStudentFees,addFeeDetails,updateFeeDetails,depositFees}
+const deleteFees = async(req,res)=>{
+    try {
+        const {id} = req.params
+        const record = await Fees.findByIdAndDelete(id);
+        if(!record){
+            res.status(404).json({success:false,message:"No record found"})
+        }
+        const allRecords = await Fees.find()
+        res.status(200).json({success:true,message:"Fee record deleted successfully",data:allRecords})
+    } catch (error) {
+        res.status(500).json({ success: false, message: `Internal server error ---- ${error.message}` })
+    }
+}
+
+module.exports = {getAllStudentFees,addFeeDetails,updateFeeDetails,depositFees,deleteFees}

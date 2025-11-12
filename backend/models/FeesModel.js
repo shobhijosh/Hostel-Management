@@ -7,10 +7,10 @@ const FeeSchema = new Schema({
         required:[true,"Student ID is required"],
         unique:true,
     },
-    roomDetails:{
-        type:Schema.Types.ObjectId,
-        ref:'Rooms'
-    },
+    // roomDetails:{
+    //     type:Schema.Types.ObjectId,
+    //     ref:'Rooms'
+    // },
     feeType:{
         type:String,
         enum:["Hostel Fees","College fees"],
