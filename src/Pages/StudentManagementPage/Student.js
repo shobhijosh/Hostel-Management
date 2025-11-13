@@ -25,26 +25,24 @@ const Student = ({ fetchStudents }) => {
     const [feeData, setFeeData] = useState([])
 
     // Store the filtered data
-    // const [filteredData,setFilteredData] = useState([])
+    const [filteredData,setFilteredData] = useState([])
 
     // Store the input value of the search input field
-    // const [searchInput,setSearchInput] = useState('')
+    const [searchInput,setSearchInput] = useState('')
 
     // Heading of the student table
     const tableHeading = ["Name", "Student Id", "Contact No.", "Course", "Room no.", "Room type", "Action"];
 
     // Handle the search input field
-    // const handleSearch = (e)=>{
-    //     let value = e.target.value
-    //     setSearchInput(value)
-
-    //     if(value.trim() === ''){
-    //         setFilteredData(data)
-    //         return
-    //     }
-
-    //     const newData = data.filter((student)=> student.fullName === value || student.roomNo === value || student.studentID === value)
-    // }
+    const handleSearch = (e)=>{
+        let value = e.target.value
+        setSearchInput(value)
+        if(value !== ''){
+            const newData = data.find((student)=> student.studentID === value || student.fullName === value || student.roomNo === value)
+            if(newData) setFilteredData([newData])
+            else setFilteredData([])
+        }
+    }
 
     // Fetch the data from the db/sessionStorage
     useEffect(() => {
@@ -108,12 +106,12 @@ const Student = ({ fetchStudents }) => {
                     <section className="filter-bar">
                         <div className="search-box full-width">
                             <svg className="search-icon" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" /></svg>
-                            <input type="text" placeholder="Search students by name, ID, or room..." />
+                            <input type="text" placeholder="Search students by name, ID, or room..." onChange={handleSearch} value={searchInput || ''}/>
                         </div>
                     </section>
 
                     <div>
-                        <TableComp heading={tableHeading} data={data} row={TableRow} />
+                        <TableComp heading={tableHeading} data={filteredData.length!==0 ? filteredData:data} row={TableRow} />
                     </div>
                 </main>
             </div>
