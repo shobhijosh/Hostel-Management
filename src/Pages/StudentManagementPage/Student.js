@@ -3,7 +3,7 @@ import './student.css'
 import Sidebar from '../../Components/SideBar/Sidebar'
 import Footer from '../../Components/Footer/Footer'
 import TableComp from '../../Components/Table/TableComp'
-import { Link, replace, useLocation, useNavigate } from 'react-router'
+import { Link, useLocation, useNavigate } from 'react-router'
 import { Mosaic } from 'react-loading-indicators'
 import { Alert } from '@mui/material'
 
