@@ -31,7 +31,10 @@ const Fees = ({fetchRooms,fetchStudents}) => {
     const getNameAndRoomNum = () => {
         const studentRecords = JSON.parse(sessionStorage.getItem('students'))
         const feeRecords = JSON.parse(sessionStorage.getItem('fees'))
-        const getStudent = studentRecords.filter((student)=> feeRecords.find((fee)=> fee.studentDetails === student._id))
+        // const getStudent = studentRecords.filter((student)=> feeRecords.find((fee)=> fee.studentDetails === student._id))
+        const getStudent = feeRecords.map((fee)=> studentRecords.find((student)=> student._id === fee.studentDetails))
+        console.log(getStudent);
+        
         setStudentName(getStudent.map((student)=>student.fullName))
         setRoomNum(getStudent.map((student)=> student.roomNo));
     }

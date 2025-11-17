@@ -316,6 +316,8 @@ const TableRow = (request) => {
     const handleDelete = async () => {
         try {
             const objId = await getStudentIdAndUpdate()
+            if(objId) await clearFeeRecord(objId)
+                
             // Deleting the room
             const response = await fetch(`http://localhost:5000/api/rooms/deleteRoom/${request.roomNum}`, {
                 method: 'DELETE',
@@ -323,7 +325,6 @@ const TableRow = (request) => {
             const json = await response.json()
             if (json.success) {
                 sessionStorage.setItem('rooms', JSON.stringify(json.newData))
-                await clearFeeRecord(objId)
             }
             console.log(json);
             navigate('/rooms', { state: { message: json.message, success: json.success } })
