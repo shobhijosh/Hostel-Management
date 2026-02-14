@@ -5,8 +5,11 @@ A full-stack Hostel Management System built using the MERN stack to streamline h
 It includes features like:
 
 -> Room management (add, update, delete, allocate, vacate)
+
 -> Student management (add, assign room, remove)
+
 -> Fee tracking with payment status table
+
 -> Mess management section
 
 Interactive admin dashboard with analytics
