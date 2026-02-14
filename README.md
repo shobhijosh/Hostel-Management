@@ -1,4 +1,17 @@
-A nice web based application which ensure the efficient management of hostel rooms, student details, billing and fees , mess menu, complaints tracking.
+🏨 Hostel Management Dashboard
+
+A full-stack Hostel Management System built using the MERN stack to streamline hostel operations. The application provides a modern dashboard with cards and graphs to monitor room occupancy, student records, and fee status.
+
+It includes features like:
+
+-> Room management (add, update, delete, allocate, vacate)
+-> Student management (add, assign room, remove)
+-> Fee tracking with payment status table
+-> Mess management section
+
+Interactive admin dashboard with analytics
+
+Built to simplify and digitize hostel administration through a centralized and user-friendly system.
 
 ## Available Scripts
 
